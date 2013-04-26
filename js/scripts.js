@@ -9,3 +9,16 @@ $('#top img').click(function() {
 
 	$('#' + country_clicked + '_nav').prev().hide().next().find('ul').fadeIn();
 });
+
+$('.navigation a').click(function() {
+	$a = $(this);
+	$content = $("#content");
+
+	var requested_page = $a.attr('href').substr(1);
+
+	$content.hide();
+	$.get('information/' + requested_page + '.html', function(response) {
+		$content.html(response);
+		$content.fadeIn();
+	});
+})
