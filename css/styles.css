@@ -34,7 +34,7 @@ body {
 	min-height: 500px;
 	padding: 20px;
 }
-#articles-list {
+#articles-list, #content {
 	margin-top: 20px;
 	padding-top: 20px;
 	border-top: 1px solid #ccc;
@@ -76,4 +76,22 @@ h2 {
 #top img {
 	border: 1px solid #ccc;
 	border-radius: 20px;
+	cursor: pointer;
+}
+.navigation {
+	display: none;
+	text-align: left;
+	list-style: none;
+	line-height: 1.5em;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 10px 20px;
+}
+.navigation a {
+	text-decoration: none;
+	color: #DF3732;
+}
+.navigation a:hover {
+	text-decoration: underline;
 }
