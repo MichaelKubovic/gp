@@ -22,10 +22,12 @@ $('.navigation a').click(function() {
 });
 
 $content = $("#content");
+$sub = $("#subpage");
 var load_page = function(requested_page) {
 	$content.hide();
 	$.get('information/' + requested_page + '.html', function(response) {
 		$content.html(response);
+		$sub.text(requested_page);
 		$content.fadeIn();
 	});
 }
