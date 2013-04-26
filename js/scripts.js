@@ -1,11 +1,3 @@
-$(document).ready(function() {
-	var hash = window.location.hash;
-	if(hash.length > 0) {
-		var requested_page = hash.substr(1);
-		load_page(requested_page);
-	}
-});
-
 $('#top img').click(function() {
 	$img = $(this);
 	var country_clicked_id = $img.parent().attr('id');
@@ -14,20 +6,25 @@ $('#top img').click(function() {
 	$('#' + country_clicked + '_nav').prev().hide().next().find('ul').fadeIn();
 });
 
-$('.navigation a').click(function() {
-	$a = $(this);
-
-	var requested_page = $a.attr('href').substr(1);
-	load_page(requested_page);
+$(window).on('load hashchange', function() {
+	load_page();
 });
 
 $content = $("#content");
 $sub = $("#subpage");
-var load_page = function(requested_page) {
+var load_page = function() {
+	var hash = window.location.hash;
 	$content.hide();
-	$.get('information/' + requested_page + '.html', function(response) {
-		$content.html(response);
-		$sub.text(requested_page);
-		$content.fadeIn();
-	});
+	$sub.text('');
+	if(hash.length > 1) {
+		var requested_page = hash.substr(1);
+
+		$.get('information/' + requested_page + '.html', function(response) {
+			// $sub.text($html.find('h2').text());
+			$content.html(response);
+			$content.fadeIn();
+
+			$sub.text($content.find('h2').text());
+		});
+	}
 }
