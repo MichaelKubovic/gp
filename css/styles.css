@@ -72,6 +72,9 @@ h1 {
 h2 {
 	
 }
+#top {
+	height: 276px;
+}
 #top img {
 	border: 1px solid #ccc;
 	border-radius: 20px;
