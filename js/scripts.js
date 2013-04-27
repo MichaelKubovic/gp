@@ -1,10 +1,3 @@
-$('#top img').click(function() {
-	var $img = $(this);
-	var country_to_open = $img.parent().hasClass('blg') ? 'blg' : 'svk';
-
-	$('.' + country_to_open + '.navigation').fadeIn().prev().hide();
-});
-
 $(window).on('load hashchange', function() {
 	load_page();
 });
@@ -17,7 +10,11 @@ var load_page = function() {
 	var hash = window.location.hash;
 	$content.hide();
 	$sub.text('');
-	if(hash.length > 1 && hash !== '#home') {
+	if(hash === '#svk' || hash === '#blg') {
+		var country_to_open = hash === '#blg' ? 'blg' : 'svk';
+		$('.' + country_to_open + '.navigation').fadeIn().prev().hide();
+		return;
+	} else if(hash.length > 1 && hash !== '#home') {
 		requested_page = hash.substr(1);
 	} else {
 		requested_page = 'home';
